@@ -1,9 +1,16 @@
-ul .pet-img {
-  width: 50px;
-  height: 50px;
+div.pet-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #selected-pet img {
   width: 120px;
   height: 120px;
+}
+
+.action-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 5px;
+  padding: 10px;
 }

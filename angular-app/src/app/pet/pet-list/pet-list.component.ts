@@ -3,7 +3,7 @@ import { Pet } from './../pet';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pet-list',
+  selector: 'pet-list',
   templateUrl: './pet-list.component.html',
   styleUrls: ['./pet-list.component.css'],
 })
@@ -33,6 +33,25 @@ export class PetListComponent implements OnInit {
       new Pet(
         'Pet3',
         4,
+        'https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg',
+        new Date()
+      )
+    );
+    this.pets.push(
+      new Pet(
+        'Pet4',
+        8,
+        'https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg',
+        new Date()
+      )
+    );
+  }
+
+  addPet(): void {
+    this.pets.push(
+      new Pet(
+        'Pet5',
+        8,
         'https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg',
         new Date()
       )

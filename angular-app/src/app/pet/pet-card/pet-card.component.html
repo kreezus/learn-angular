@@ -1,0 +1,10 @@
+<div class="pet-card" (click)="selectPet(pet)" [ngClass]="{'selected': selected }">
+    <div class="pet-image">
+        <img class="pet-img" [src]="pet.imageUrl" alt="">
+    </div>
+    <div class="pet-details">
+        <h4>{{ pet.name}} </h4>
+        <p>{{ pet.age | petAge}} </p>
+        <p><small> {{ pet.registeredDate | date }} </small></p>
+    </div>
+</div>

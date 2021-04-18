@@ -1,19 +1,13 @@
 <h3>Liste des pets</h3>
-<ul *ngIf="pets.length > 0">
-    <li *ngFor="let pet of pets" (click)="selectedPet= pet">
-        <div>
-            <img class="pet-img" [src]="pet.imageUrl" alt="">
-            <span>Enregistré le {{ pet.registeredDate }}: <strong>{{ pet.name }}</strong> {{ pet.age }} mois</span>
-        </div>
-    </li>
-</ul>
+<div class="pet-list">
+    <pet-card *ngFor="let pet of pets" [pet]="pet" (onPetSelected)="selectedPet=$event"
+        [selected]="selectedPet?.name == pet.name"></pet-card>
+</div>
+<div class="action-bar">
+    <button (click)="addPet()">Ajouter un Pet</button>
+</div>
 <hr>
 <section class="" id="selected-pet" *ngIf="selectedPet != null">
     <h3>Selected Pet</h3>
-    <div>
-        <img class="" [src]="selectedPet.imageUrl" alt="">
-        <span>Enregistré le {{ selectedPet.registeredDate | date}}: <strong>{{ selectedPet.name }}</strong> {{ selectedPet.age
-            }} mois</span>
-        <span></span>
-    </div>
+    <pet-card [pet]="selectedPet"></pet-card>
 </section>

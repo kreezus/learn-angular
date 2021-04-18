@@ -1,0 +1,30 @@
+.pet-card {
+  min-width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px 5px;
+  margin: 5px 10px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.7s ease;
+}
+
+.pet-card.selected{
+  background-color: #eee;
+}
+
+.pet-card .pet-image {
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.pet-card .pet-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
