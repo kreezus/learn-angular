@@ -1,5 +1,17 @@
 # AngularApp
 
+
+## Commandes du tutoriel
+
+```sh
+ng g module pet -m app
+```
+
+```sh
+ng g component pet/pet-list -m pet
+```
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
 ## Development server
