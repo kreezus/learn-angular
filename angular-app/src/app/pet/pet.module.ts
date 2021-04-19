@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { PetCardComponent } from './pet-card/pet-card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,8 @@ import { PetAgePipe } from './pet-age.pipe';
     PetAgePipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [
     PetListComponent,

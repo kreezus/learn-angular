@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PetModule } from './pet/pet.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { PetModule } from './pet/pet.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PetModule
+    PetModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

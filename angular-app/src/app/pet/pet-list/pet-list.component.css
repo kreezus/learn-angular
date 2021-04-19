@@ -3,6 +3,10 @@ div.pet-list {
   flex-wrap: wrap;
 }
 
+#selected-pet {
+  padding: 5px 10px;
+}
+
 #selected-pet img {
   width: 120px;
   height: 120px;
@@ -19,7 +23,7 @@ div.pet-list {
   text-align: center;
 }
 
-button.delete{
+button.delete {
   background-color: red;
   color: white;
 }

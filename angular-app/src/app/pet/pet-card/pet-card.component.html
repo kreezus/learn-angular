@@ -1,4 +1,4 @@
-<div class="pet-card" (click)="selectPet(pet)" [ngClass]="{'selected': selected }">
+<div class="pet-card" (click)="selectPet(pet)" [ngClass]="{'selected': selected }" [hover] hoverDefaultColor="grey">
     <div class="pet-image">
         <img class="pet-img" [src]="pet.imageUrl" alt="">
     </div>

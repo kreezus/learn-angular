@@ -10,12 +10,12 @@
             [selected]="selectedPet?.name == pet.name"></pet-card>
     </div>
     <div class="action-bar">
-        <button (click)="refreshList()">Refresh list</button>
-        <button (click)="addPet()">Ajouter un Pet</button>
+        <button (click)="refreshList()" [hover] hoverDefaultColor="grey">Refresh list</button>
+        <button (click)="addPet()" [hover]="'green'">Ajouter un Pet</button>
         <button class="delete" *ngIf="selectedPet != null" (click)="deletePet(selectedPet?.name)">Delete Selected Pet</button>
     </div>
     <hr>
-    <section class="" id="selected-pet" *ngIf="selectedPet != null">
+    <section class="" id="selected-pet" *ngIf="selectedPet != null" [hover]="'cyan'">
         <h3>Selected Pet</h3>
         <pet-card [pet]="selectedPet"></pet-card>
     </section>
