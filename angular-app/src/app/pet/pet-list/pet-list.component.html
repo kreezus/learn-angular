@@ -1,13 +1,22 @@
 <h3>Liste des pets</h3>
-<div class="pet-list">
-    <pet-card *ngFor="let pet of pets" [pet]="pet" (onPetSelected)="selectedPet=$event"
-        [selected]="selectedPet?.name == pet.name"></pet-card>
-</div>
-<div class="action-bar">
-    <button (click)="addPet()">Ajouter un Pet</button>
-</div>
-<hr>
-<section class="" id="selected-pet" *ngIf="selectedPet != null">
-    <h3>Selected Pet</h3>
-    <pet-card [pet]="selectedPet"></pet-card>
-</section>
+<ng-container *ngIf="isListLoading">
+    <div class="list-loader">
+        <h4>List is loading....</h4>
+    </div>
+</ng-container>
+<ng-container *ngIf="!isListLoading">
+    <div class="pet-list">
+        <pet-card *ngFor="let pet of pets" [pet]="pet" (onPetSelected)="selectedPet=$event"
+            [selected]="selectedPet?.name == pet.name"></pet-card>
+    </div>
+    <div class="action-bar">
+        <button (click)="refreshList()">Refresh list</button>
+        <button (click)="addPet()">Ajouter un Pet</button>
+        <button class="delete" *ngIf="selectedPet != null" (click)="deletePet(selectedPet?.name)">Delete Selected Pet</button>
+    </div>
+    <hr>
+    <section class="" id="selected-pet" *ngIf="selectedPet != null">
+        <h3>Selected Pet</h3>
+        <pet-card [pet]="selectedPet"></pet-card>
+    </section>
+</ng-container>

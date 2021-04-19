@@ -14,3 +14,12 @@ div.pet-list {
   margin: 10px 5px;
   padding: 10px;
 }
+
+.list-loader {
+  text-align: center;
+}
+
+button.delete{
+  background-color: red;
+  color: white;
+}

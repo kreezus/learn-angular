@@ -1,16 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
-    width: 800px;
-    margin: auto;
-    background-color: #EFEFEF;
+  width: 800px;
+  margin: auto;
+  background-color: #efefef;
 }
 
+
+
 .page-container {
-    background-color: #FFFFFF;
-    padding: 20px;
+  background-color: #ffffff;
+  padding: 20px;
 }
 
 section {
-    margin: 20px 0px;
+  margin: 20px 0px;
+}
+
+button {
+  padding: 10px 10px;
+  border-radius: 7px;
+  margin: 3px 5px;
+  cursor: pointer;
 }

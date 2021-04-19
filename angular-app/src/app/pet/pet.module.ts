@@ -18,6 +18,6 @@ import { PetAgePipe } from './pet-age.pipe';
   exports: [
     PetListComponent,
     PetCardComponent
-  ]
+  ],
 })
 export class PetModule { }
