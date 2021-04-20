@@ -1,7 +1,7 @@
 import { PetService } from './../pet-service';
 import { PetEntity } from './../pet-entity';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'pet-card',
@@ -20,7 +20,8 @@ export class PetCardComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private petService: PetService
+    private petService: PetService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -34,5 +35,10 @@ export class PetCardComponent implements OnInit {
 
   selectPet(selectedPet: PetEntity) {
     this.onPetSelected.emit(selectedPet);
+  }
+
+  deletePet(petId: number) {
+    this.petService.removePet(petId);
+    this.router.navigateByUrl('/pets');
   }
 }

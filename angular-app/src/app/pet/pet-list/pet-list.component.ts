@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PetService } from '../pet-service';
 import { PetEntity } from './../pet-entity';
 import { Pet } from './../pet';
@@ -15,7 +15,8 @@ export class PetListComponent implements OnInit {
   isListLoading: boolean = false;
   constructor(
     private petService: PetService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -34,20 +35,11 @@ export class PetListComponent implements OnInit {
   }
 
   addPet(): void {
-    const petId = this.pets.length + 1;
-    this.petService.addPet(
-      new Pet(
-        petId,
-        `Pet${petId}`,
-        8,
-        'https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg',
-        new Date()
-      )
-    );
+    this.router.navigate(['pets', 'new']);
   }
 
-  deletePet(petName: string) {
-    this.petService.removePet(petName);
+  deletePet(petId: number) {
+    this.petService.removePet(petId);
     this.selectedPet = undefined;
   }
 }

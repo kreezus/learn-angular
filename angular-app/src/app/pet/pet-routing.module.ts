@@ -1,3 +1,4 @@
+import { PetEditComponent } from './pet-edit/pet-edit.component';
 import { PetResolverService } from './pet-resolver.service';
 import { PetListResolverService } from './pet-list-resolver.service';
 import { PetListComponent } from './pet-list/pet-list.component';
@@ -7,6 +8,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  {
+    path: 'new',
+    component: PetEditComponent,
+    resolve: {
+      pet: PetResolverService,
+    },
+  },
   {
     path: '',
     component: PetListComponent,
@@ -27,6 +35,14 @@ const routes: Routes = [
   {
     path: 'detail/:petId',
     component: PetCardComponent,
+    canActivate: [PetNotFoundGuard],
+    resolve: {
+      pet: PetResolverService,
+    },
+  },
+  {
+    path: 'edit/:petId',
+    component: PetEditComponent,
     canActivate: [PetNotFoundGuard],
     resolve: {
       pet: PetResolverService,
