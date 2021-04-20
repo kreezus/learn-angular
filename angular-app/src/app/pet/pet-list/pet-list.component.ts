@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { PetService } from '../pet-service';
 import { PetEntity } from './../pet-entity';
 import { Pet } from './../pet';
@@ -12,10 +13,15 @@ export class PetListComponent implements OnInit {
   pets: PetEntity[] = [];
   selectedPet: PetEntity;
   isListLoading: boolean = false;
-  constructor(private petService: PetService) {}
+  constructor(
+    private petService: PetService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.refreshList();
+    this.activatedRoute.data.subscribe((data: { pets: PetEntity[] }) => {
+      this.pets = data.pets;
+    });
   }
 
   refreshList() {

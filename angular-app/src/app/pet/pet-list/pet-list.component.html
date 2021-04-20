@@ -5,7 +5,7 @@
     </div>
 </ng-container>
 <ng-container *ngIf="!isListLoading">
-    <div class="pet-list">
+    <div class="pet-list" *ngIf="pets.length > 0">
         <pet-card *ngFor="let pet of pets" [pet]="pet" [routerLink]="[pet.id]"></pet-card>
     </div>
     <div class="action-bar">

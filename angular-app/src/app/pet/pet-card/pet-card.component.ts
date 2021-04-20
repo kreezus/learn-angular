@@ -26,9 +26,8 @@ export class PetCardComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.activatedRoute.snapshot.paramMap;
     if (routeParams.has('petId')) {
-      this.activatedRoute.params.subscribe((params) => {
-        const petIdFromRoute = Number(params['petId']);
-        this.pet = this.petService.getById(petIdFromRoute);
+      this.activatedRoute.data.subscribe((data: { pet: PetEntity }) => {
+        this.pet = data.pet;
       });
     }
   }

@@ -1,3 +1,5 @@
+import { PetResolverService } from './pet-resolver.service';
+import { PetListResolverService } from './pet-list-resolver.service';
 import { PetListComponent } from './pet-list/pet-list.component';
 import { PetNotFoundGuard } from './pet-not-found.guard';
 import { PetCardComponent } from './pet-card/pet-card.component';
@@ -8,11 +10,17 @@ const routes: Routes = [
   {
     path: '',
     component: PetListComponent,
+    resolve: {
+      pets: PetListResolverService,
+    },
     children: [
       {
         path: ':petId',
         component: PetCardComponent,
         canActivate: [PetNotFoundGuard],
+        resolve: {
+          pet: PetResolverService,
+        },
       },
     ],
   },
@@ -20,6 +28,9 @@ const routes: Routes = [
     path: 'detail/:petId',
     component: PetCardComponent,
     canActivate: [PetNotFoundGuard],
+    resolve: {
+      pet: PetResolverService,
+    },
   },
 ];
 
