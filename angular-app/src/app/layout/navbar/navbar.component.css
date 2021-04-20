@@ -13,3 +13,13 @@ nav {
     font-weight: 600;
     font-size: 22px;
 }
+
+.actions {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.actions a{
+    margin: 0px 10px;
+}

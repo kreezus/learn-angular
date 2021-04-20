@@ -1,9 +1,7 @@
-import { PetNotFoundGuard } from './pet/pet-not-found.guard';
+import { HomeModule } from './home/home.module';
+import { PetModule } from './pet/pet.module';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { HomeComponent } from './home/home/home.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-import { PetCardComponent } from './pet/pet-card/pet-card.component';
-import { PetListComponent } from './pet/pet-list/pet-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -20,27 +18,20 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'pets',
-    component: PetListComponent,
-    children: [
-      {
-        path: ':petId',
-        component: PetCardComponent,
-        canActivate: [PetNotFoundGuard],
-      },
-    ],
-  },
-  {
-    path: 'pets/detail/:petId',
-    component: PetCardComponent,
-    canActivate: [PetNotFoundGuard],
+    //loadChildren: './pet/pet.module#PetModule',
+    loadChildren: () => import('./pet/pet.module').then((m) => m.PetModule),
   },
   {
     path: '404',
     component: PageNotFoundComponent,
+  },
+  {
+    path: 'vets',
+    loadChildren: () => import('./vets/vets.module').then((m) => m.VetsModule),
   },
   { path: '**', redirectTo: 'home', pathMatch: 'prefix' },
 ];
