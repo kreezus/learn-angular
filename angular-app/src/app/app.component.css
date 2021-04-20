@@ -1,7 +1,11 @@
 section#hero {
-  padding: 20px 50px;
+  padding: 10px 50px;
 }
 
 section#hero h1 {
   text-align: center;
+}
+
+#content {
+  padding: 10px;
 }

@@ -7,6 +7,14 @@ div.pet-list {
   padding: 5px 10px;
 }
 
+#selected-pet .no-selected {
+  padding: 20px 80px;
+  background-color: lightgrey;
+  opacity: 0.4;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 #selected-pet img {
   width: 120px;
   height: 120px;

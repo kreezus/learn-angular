@@ -1,10 +1,11 @@
 <div class="pet-card" (click)="selectPet(pet)" [ngClass]="{'selected': selected }" [hover] hoverDefaultColor="grey">
     <div class="pet-image">
-        <img class="pet-img" [src]="pet.imageUrl" alt="">
+        <img class="pet-img" [src]="pet?.imageUrl" alt="">
     </div>
     <div class="pet-details">
-        <h4>{{ pet.name}} </h4>
-        <p>{{ pet.age | petAge}} </p>
-        <p><small> {{ pet.registeredDate | date }} </small></p>
+        <h4>{{ pet?.name}} </h4>
+        <p>{{ pet?.age | petAge}} </p>
+        <p><small> {{ pet?.registeredDate | date }} </small></p>
+        <a [routerLink]="['detail',pet?.id]">Go to page</a>
     </div>
 </div>

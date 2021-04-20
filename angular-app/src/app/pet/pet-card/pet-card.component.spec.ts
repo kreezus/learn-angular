@@ -1,3 +1,6 @@
+import { PetAgePipe } from './../pet-age.pipe';
+import { SharedModule } from './../../shared/shared.module';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PetCardComponent } from './pet-card.component';
@@ -8,9 +11,9 @@ describe('PetCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PetCardComponent ]
-    })
-    .compileComponents();
+      declarations: [PetCardComponent, PetAgePipe],
+      imports: [RouterTestingModule, SharedModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

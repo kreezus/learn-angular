@@ -1,0 +1,15 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    background-color: coral;
+    color: #efefef;
+    min-height: 60px;
+}
+.brand, .actions{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 22px;
+}

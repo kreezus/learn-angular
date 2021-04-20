@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have interpolation 'Valeur d\'interpolation'`, () => {
+  it(`should have Page Header value 'Learn Angular with Pet Clinic'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.interpolation).toEqual('Valeur d\'interpolation');
+    expect(app.pageHeader).toEqual('Learn Angular with Pet Clinic');
   });
 
-  it('should render title', () => {
+  it('should render page Header', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('#content h2').textContent).toContain('Valeur d\'interpolation défini dans le component AppComponent!');
+    expect(compiled.querySelector('#hero h1').textContent).toContain('Learn Angular with Pet Clinic');
   });
 });

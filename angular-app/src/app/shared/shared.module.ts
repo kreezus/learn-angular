@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HoverDirective } from './directives/hover/hover.directive';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [HoverDirective],
+  declarations: [HoverDirective, PageNotFoundComponent],
   imports: [CommonModule],
-  exports: [HoverDirective],
+  exports: [HoverDirective, PageNotFoundComponent],
 })
 export class SharedModule {}

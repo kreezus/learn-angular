@@ -22,6 +22,10 @@ export class PetService {
     this.initialPets.push(petToAdd);
   }
 
+  getById(petId: number){
+    return this.initialPets.find(p=>p.id == petId);
+  }
+
   removePet(petName: string) {
     this.initialPets.splice(
       this.initialPets.findIndex((p) => p.name == petName),
@@ -31,6 +35,7 @@ export class PetService {
 
   initialPets: PetEntity[] = [
     {
+      id: 1,
       name: 'Pet1',
       age: 12,
       imageUrl:
@@ -38,6 +43,7 @@ export class PetService {
       registeredDate: new Date(),
     },
     {
+      id: 2,
       name: 'Pet2',
       age: 6,
       imageUrl:
@@ -45,6 +51,7 @@ export class PetService {
       registeredDate: new Date(),
     },
     {
+      id: 3,
       name: 'Pet3',
       age: 4,
       imageUrl:
@@ -52,6 +59,7 @@ export class PetService {
       registeredDate: new Date(),
     },
     {
+      id: 4,
       name: 'Pet4',
       age: 8,
       imageUrl:
@@ -59,6 +67,7 @@ export class PetService {
       registeredDate: new Date(),
     },
     {
+      id: 5,
       name: 'Pet5',
       age: 7,
       imageUrl:

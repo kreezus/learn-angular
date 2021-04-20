@@ -28,9 +28,11 @@ export class PetListComponent implements OnInit {
   }
 
   addPet(): void {
+    const petId = this.pets.length + 1;
     this.petService.addPet(
       new Pet(
-        'Pet5',
+        petId,
+        `Pet${petId}`,
         8,
         'https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg',
         new Date()
