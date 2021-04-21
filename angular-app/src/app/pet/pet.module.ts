@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PetRoutingModule } from './pet-routing.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module';
@@ -18,10 +18,10 @@ import { PetEditComponent } from './pet-edit/pet-edit.component';
   ],
   imports: [
     CommonModule,
-    FormsModule,
     RouterModule,
     SharedModule,
     PetRoutingModule,
+    ReactiveFormsModule,
   ],
   exports: [PetListComponent, PetCardComponent],
 })

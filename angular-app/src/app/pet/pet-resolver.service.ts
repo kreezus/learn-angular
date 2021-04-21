@@ -20,7 +20,7 @@ export class PetResolverService implements Resolve<PetEntity> {
   ): PetEntity | Observable<PetEntity> | Promise<PetEntity> {
     const petId = <number>route.params['petId'];
     return (
-      this.petService.getById(petId) || new Pet(null, '', null, '', new Date())
+      this.petService.getById(petId) || new Pet(null, '', 2, '', new Date())
     );
   }
 }

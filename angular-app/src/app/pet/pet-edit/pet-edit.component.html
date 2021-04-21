@@ -7,46 +7,50 @@
         <hr>
         <h5>Pet Form value</h5>
         <pre>{{ petForm.value | json}}</pre>
-        <h5>Pet Form status</h5>
-        <pre>{{ petForm.status}}</pre>
         <h5>Pet Form touched</h5>
         <pre>{{ petForm.touched}}</pre>
         <h5>Pet Form pristine</h5>
         <pre>{{ petForm.pristine}}</pre>
+        <h5>Pet Form status</h5>
+        <pre>{{ petForm.status}}</pre>
     </div>
     <div class="form-content">
-        <form name="petForm" novalidate #petForm="ngForm" role="form">
+        <form name="petForm" [formGroup]="petForm" novalidate role="form" *ngIf="petForm && petForm.controls">
             <div class="field" *ngIf="pet?.id">
                 <label for="pet-id">Pet id *</label>
-                <input type="number" id="pet-id" name="id" [(ngModel)]="pet.id" #id="ngModel" placeholder="Enter Pet id"
-                    [disabled]="pet?.id" required>
-                <div *ngIf="id.invalid && (id.dirty || id.touched)" class="field-error">
+                <input type="number" id="pet-id" name="id" formControlName="id" placeholder="Enter Pet id"
+                     required>
+                <div *ngIf="petForm.get('id').invalid && (petForm.get('id').dirty || petForm.get('id').touched)"
+                    class="field-error">
                     <ul>
-                        <li *ngFor="let error of id.errors | keyvalue">Id error: {{ error.key }} is {{ error.value }}
+                        <li *ngFor="let error of petForm.get('id').errors | keyvalue">Id error: {{ error.key }} is {{ error.value }}
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="field">
                 <label for="pet-name">Pet name *</label>
-                <input type="text" id="pet-name" name="name" maxlength="20" [(ngModel)]="pet.name" #name="ngModel"
+                <input type="text" id="pet-name" name="name" maxlength="20" formControlName="name"
                     placeholder="Enter Pet name" required>
-                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="field-error">
+                <div *ngIf="petForm.get('name').invalid && (petForm.get('name').dirty || petForm.get('name').touched)"
+                    class="field-error">
                     <ul>
-                        <li *ngFor="let error of name.errors | keyvalue">Name error: {{ error.key }} is {{ error.value
+                        <li *ngFor="let error of petForm.get('name').errors | keyvalue">Name error: {{ error.key }} is
+                            {{ error.value
                             }}</li>
                     </ul>
                 </div>
             </div>
             <div class="field">
                 <label for="pet-type">Pet type *</label>
-                <select name="type" id="pet-type" [(ngModel)]="pet.petType" #petType="ngModel" required>
+                <select name="type" id="pet-type" formControlName="petType" required>
                     <option [value]="null"></option>
                     <option *ngFor="let petType of petTypes" [value]="petType">{{ petType }}</option>
                 </select>
-                <div *ngIf="petType.invalid && (petType.dirty || petType.touched)" class="field-error">
+                <div *ngIf="petForm.get('petType').invalid && (petForm.get('petType').dirty || petForm.get('petType').touched)"
+                    class="field-error">
                     <ul>
-                        <li *ngFor="let error of petType.errors | keyvalue">Name error: {{ error.key }} is {{
+                        <li *ngFor="let error of petForm.get('petType').errors | keyvalue">Name error: {{ error.key }} is {{
                             error.value }}
                         </li>
                     </ul>
@@ -54,35 +58,37 @@
             </div>
             <div class="field">
                 <label for="pet-age">Pet age *</label>
-                <input type="number" id="pet-age" name="age" min="2" max="10" [(ngModel)]="pet.age" #age="ngModel"
+                <input type="number" id="pet-age" name="age" min="2" max="10" formControlName="age"
                     placeholder="Enter Pet age" required>
-                <div *ngIf="age.invalid && (age.dirty || age.touched)" class="field-error">
+                <div *ngIf="petForm.get('age').invalid && (petForm.get('age').dirty || petForm.get('age').touched)"
+                    class="field-error">
                     <ul>
-                        <li *ngFor="let error of age.errors | keyvalue">Age error: {{ error.key }} is {{ error.value }}
+                        <li *ngFor="let error of petForm.get('age').errors | keyvalue">Age error: {{ error.key }} is {{ error.value | json}}
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="field">
                 <label for="pet-image">Pet image *</label>
-                <input type="text" id="pet-image" name="image" [(ngModel)]="pet.imageUrl" #image="ngModel"
+                <input type="text" id="pet-image" name="image" formControlName="imageUrl"
                     placeholder="Enter Pet image url" required>
-                <div *ngIf="image.invalid && (image.dirty || image.touched)" class="field-error">
+                <div *ngIf="petForm.get('imageUrl').invalid && (petForm.get('imageUrl').dirty || petForm.get('imageUrl').touched)"
+                    class="field-error">
                     <ul>
-                        <li *ngFor="let error of image.errors | keyvalue">Image error: {{ error.key }} is {{ error.value
+                        <li *ngFor="let error of petForm.get('imageUrl').errors | keyvalue">Image error: {{ error.key }}
+                            is {{ error.value | json
                             }}</li>
                     </ul>
                 </div>
             </div>
             <div class="field">
                 <label for="pet-registered-date">Pet registered date</label>
-                <input type="date" id="pet-registered-date" name="registeredDate"
-                    [ngModel]="pet?.registeredDate | date:'yyyy-MM-dd'" (ngModelChange)="pet.registeredDate = $event"
-                    placeholder="Enter Pet registerd date" #registeredDate="ngModel" required>
-                <div *ngIf="registeredDate.invalid && (registeredDate.dirty || registeredDate.touched)"
+                <input type="date" id="pet-registered-date" name="registeredDate" formControlName="registeredDate"
+                    placeholder="Enter Pet registerd date" required>
+                <div *ngIf="petForm.controls.registeredDate.invalid && (petForm.controls.registeredDate.dirty || petForm.controls.registeredDate.touched)"
                     class="field-error">
                     <ul>
-                        <li *ngFor="let error of registeredDate.errors | keyvalue">Registered date error: {{ error.key
+                        <li *ngFor="let error of petForm.get('registeredDate').errors | keyvalue">Registered date error: {{ error.key
                             }} is {{
                             error.value }}</li>
                     </ul>
@@ -90,11 +96,13 @@
             </div>
             <div class="field">
                 <label for="pet-health-passport">Pet health passport </label>
-                <input type="file" id="pet-health-passport" name="healthPassport"  [(ngModel)]="pet.healthPassport" #healthPassport="ngModel"
-                    placeholder="Select file"  (change)="onFileSelected($event.target.files)">
-                <div *ngIf="healthPassport.invalid && (healthPassport.dirty || healthPassport.touched)" class="field-error">
+                <input type="file" id="pet-health-passport" name="healthPassport" formControlName="healthPassport"
+                    placeholder="Select file" (change)="onFileSelected($event.target.files)">
+                <div *ngIf="petForm.controls.healthPassport.invalid && (petForm.controls.healthPassport.dirty || petForm.controls.healthPassport.touched)"
+                    class="field-error">
                     <ul>
-                        <li *ngFor="let error of healthPassport.errors | keyvalue">HealthPassport error: {{ error.key }} is {{ error.value }}
+                        <li *ngFor="let error of petForm.get('healthPassport').errors | keyvalue">HealthPassport error: {{ error.key }}
+                            is {{ error.value }}
                         </li>
                     </ul>
                 </div>

@@ -8,6 +8,7 @@
 
 .content div.json{
   max-width: 350px;
+  padding: 5px;
   overflow-x: auto;
   background-color: #EEE;
 }
