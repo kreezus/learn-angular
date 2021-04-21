@@ -7,4 +7,5 @@ export interface PetEntity {
   imageUrl: string;
   registeredDate: Date;
   petType?: PetType;
+  healthPassport?: string;
 }

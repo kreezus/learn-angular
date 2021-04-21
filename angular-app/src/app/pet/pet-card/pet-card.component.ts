@@ -38,7 +38,9 @@ export class PetCardComponent implements OnInit {
   }
 
   deletePet(petId: number) {
-    this.petService.removePet(petId);
-    this.router.navigateByUrl('/pets');
+    if (confirm(`Are sure you want to delete Pet with ID: ${petId} ?`)) {
+      this.petService.removePet(petId);
+      this.router.navigateByUrl('/pets');
+    }
   }
 }

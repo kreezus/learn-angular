@@ -7,6 +7,7 @@ export class Pet implements PetEntity {
   imageUrl: string;
   registeredDate: Date;
   petType: PetType;
+  healthPassport?: string;
   constructor(
     id: number,
     name: string,

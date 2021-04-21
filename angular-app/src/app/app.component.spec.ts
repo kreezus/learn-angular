@@ -20,12 +20,6 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have Page Header value 'Learn Angular with Pet Clinic'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.pageHeader).toEqual('Learn Angular with Pet Clinic');
-  });
-
   it('should render page Header', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();

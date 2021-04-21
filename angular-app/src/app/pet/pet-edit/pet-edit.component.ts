@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class PetEditComponent implements OnInit {
   pet: PetEntity;
   public petTypes = Object.values(PetType);
+  fileToUpload: File = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,8 +30,17 @@ export class PetEditComponent implements OnInit {
     this.petService.addPet(pet);
     this.cancel();
   }
-  update(pet: PetEntity): void {}
+  update(pet: PetEntity): void {
+    this.petService.update(pet.id, pet);
+  }
   cancel(): void {
     this.router.navigate(['pets']);
+  }
+  onFileSelected(files: FileList) {
+    this.fileToUpload = files.item(0);
+    console.log(
+      'Send this file to the server using multi part, ',
+      this.fileToUpload
+    );
   }
 }

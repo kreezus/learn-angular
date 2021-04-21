@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  pageHeader = "Learn Angular with Pet Clinic";
 
   constructor(private petService: PetService) {}
   ngOnInit(): void {

@@ -8,15 +8,20 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
-    })
-    .compileComponents();
+      declarations: [NavbarComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it(`should have Page Header value 'Learn Angular with Pet Clinic'`, () => {
+    const fixture = TestBed.createComponent(NavbarComponent);
+    const app = fixture.componentInstance;
+    expect(app.pageHeader).toEqual('Learn Angular with Pet Clinic');
   });
 
   it('should create', () => {

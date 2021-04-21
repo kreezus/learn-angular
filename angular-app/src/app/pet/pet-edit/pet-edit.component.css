@@ -1,4 +1,15 @@
-form {
+.content {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.content div{
+  margin: 5px 10px;
+}
+
+.content div.json{
+  max-width: 350px;
+  overflow-x: auto;
+  background-color: #EEE;
 }
 
 form .field {
@@ -6,7 +17,7 @@ form .field {
   margin: 5px 0px;
   display: flex;
   justify-content: space-evenly;
-  min-width: 600px;
+  min-width: 400px;
   flex-direction: column;
 }
 

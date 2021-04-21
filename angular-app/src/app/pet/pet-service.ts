@@ -8,6 +8,13 @@ import { delay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PetService {
+  update(petId: number, pet: PetEntity) {
+    const foundPet = this.getById(petId);
+    if (foundPet) {
+      const index = this.initialPets.findIndex((p) => p.id == petId);
+      this.initialPets[index] = pet;
+    }
+  }
   constructor() {}
 
   getSyncPets(): PetEntity[] {

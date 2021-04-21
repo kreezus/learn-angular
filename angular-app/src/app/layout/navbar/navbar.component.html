@@ -1,7 +1,8 @@
 <nav class="">
     <div class="brand"><a [routerLink]="['/']">PetClinic</a></div>
+    <div class="title">{{ pageHeader }}</div>
     <div class="actions">
-        <a [routerLink]= "['pets']">Pets</a>
-        <a [routerLink]= "['vets']">Vets</a>
+        <a [routerLink]="['pets']">Pets</a>
+        <a [routerLink]="['vets']">Vets</a>
     </div>
 </nav>
