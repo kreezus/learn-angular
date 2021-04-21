@@ -1,13 +1,19 @@
+import { environment } from './../../environments/environment';
 import { PetType } from './pet-type';
 import { PetEntity } from './pet-entity';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { map, tap, toArray } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PetService {
+  apiBaseUrl = environment.apiUrl;
+  initialPets: PetEntity[] = [];
+
   update(petId: number, pet: PetEntity) {
     const foundPet = this.getById(petId);
     if (foundPet) {
@@ -15,15 +21,32 @@ export class PetService {
       this.initialPets[index] = pet;
     }
   }
-  constructor() {}
-
-  getSyncPets(): PetEntity[] {
-    return this.initialPets;
+  constructor(private httpClient: HttpClient) {
+    this.httpClient
+      .get<PetEntity[]>(`${this.apiBaseUrl}/pets/pets.json`, {
+        observe: 'body',
+      })
+      .subscribe((resp) => {
+        this.initialPets = resp;
+      });
   }
 
-  getAsyncPets(): Observable<PetEntity[]> {
-    const pets = of(this.initialPets).pipe(delay(2000));
-    return pets;
+  getPets(): Observable<PetEntity[]> {
+    return this.httpClient
+      .get<PetEntity[]>(`${this.apiBaseUrl}/pets/pets.json`, {
+        observe: 'body',
+      })
+      .pipe(
+        map((pets) => {
+          pets.forEach((p) => this.transformPet(p));
+          return pets;
+        })
+      );
+  }
+
+  transformPet(pet: PetEntity): PetEntity {
+    pet.name = pet.name.toUpperCase();
+    return pet;
   }
 
   addPet(petToAdd: PetEntity): void {
@@ -31,7 +54,7 @@ export class PetService {
     this.initialPets.push(petToAdd);
   }
 
-  getById(petId: number) {
+  async getById(petId: number) {
     return this.initialPets.find((p) => p.id == petId);
   }
 
@@ -41,52 +64,4 @@ export class PetService {
       1
     );
   }
-
-  initialPets: PetEntity[] = [
-    {
-      id: 1,
-      name: 'Pet1',
-      age: 12,
-      imageUrl:
-        'https://468915-1496741-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/01/cat-facial-expressions.jpg',
-      registeredDate: new Date(),
-      petType: PetType.CAT,
-    },
-    {
-      id: 2,
-      name: 'Pet2',
-      age: 6,
-      imageUrl:
-        'https://cdn.shopify.com/s/files/1/0011/0552/articles/RCF_blog_1400x.jpg?v=1556467722',
-      registeredDate: new Date(),
-      petType: PetType.CAT,
-    },
-    {
-      id: 3,
-      name: 'Pet3',
-      age: 4,
-      imageUrl:
-        'https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg',
-      registeredDate: new Date(),
-      petType: PetType.DOG,
-    },
-    {
-      id: 4,
-      name: 'Pet4',
-      age: 8,
-      imageUrl:
-        'https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg',
-      registeredDate: new Date(),
-      petType: PetType.DOG,
-    },
-    {
-      id: 5,
-      name: 'Pet5',
-      age: 7,
-      imageUrl:
-        'https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg',
-      registeredDate: new Date(),
-      petType: PetType.DOG,
-    },
-  ];
 }

@@ -1,7 +1,7 @@
+import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PetService } from '../pet-service';
 import { PetEntity } from './../pet-entity';
-import { Pet } from './../pet';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PetListComponent implements OnInit {
   pets: PetEntity[] = [];
+  pets$: Observable<PetEntity[]>;
   selectedPet: PetEntity;
   isListLoading: boolean = false;
   constructor(
@@ -20,18 +21,25 @@ export class PetListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe((data: { pets: PetEntity[] }) => {
-      this.pets = data.pets;
-    });
+    //this.activatedRoute.data.subscribe((data: { pets: PetEntity[] }) => {
+    //  this.pets = data.pets;
+    //});
+    this.pets$ = this.petService.getPets();
+    this.refreshList();
   }
 
+  transformPet(pet: PetEntity): PetEntity {
+    pet.name = pet.name.toUpperCase();
+    return pet;
+  }
   refreshList() {
-    this.isListLoading = true;
+    //this.isListLoading = true;
     //this.pets = this.petService.getSyncPets();
-    this.petService.getAsyncPets().subscribe((pets) => {
-      this.pets = pets;
-      this.isListLoading = false;
-    });
+    this.pets$ = this.petService.getPets();
+    //this.petService.getAsyncPets().subscribe((pets) => {
+    //  this.pets = pets;
+    //  this.isListLoading = false;
+    //});
   }
 
   addPet(): void {

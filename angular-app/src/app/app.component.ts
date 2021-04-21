@@ -10,6 +10,5 @@ export class AppComponent implements OnInit {
 
   constructor(private petService: PetService) {}
   ngOnInit(): void {
-    console.log('Pets list from App component: ',this.petService.getSyncPets());
   }
 }

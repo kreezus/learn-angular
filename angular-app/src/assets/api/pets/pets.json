@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Pet1",
+    "age": 12,
+    "imageUrl": "https://468915-1496741-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/01/cat-facial-expressions.jpg",
+    "registeredDate": "Wed Apr 21 2021 23:59:32 GMT+0200 (heure d’été d’Europe centrale)",
+    "petType": "CAT"
+  },
+  {
+    "id": 2,
+    "name": "Pet2",
+    "age": 6,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0011/0552/articles/RCF_blog_1400x.jpg?v=1556467722",
+    "registeredDate": "Wed Apr 21 2021 23:59:32 GMT+0200 (heure d’été d’Europe centrale)",
+    "petType": "CAT"
+  },
+  {
+    "id": 3,
+    "name": "Pet3",
+    "age": 4,
+    "imageUrl": "https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg",
+    "registeredDate": "Wed Apr 21 2021 23:59:32 GMT+0200 (heure d’été d’Europe centrale)",
+    "petType": "DOG"
+  },
+  {
+    "id": 4,
+    "name": "Pet4",
+    "age": 8,
+    "imageUrl": "https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg",
+    "registeredDate": "Wed Apr 21 2021 23:59:32 GMT+0200 (heure d’été d’Europe centrale)",
+    "petType": "DOG"
+  },
+  {
+    "id": 5,
+    "name": "Pet5",
+    "age": 7,
+    "imageUrl": "https://cdn.pixabay.com/photo/2020/01/21/01/33/dog-4781854_1280.jpg",
+    "registeredDate": "Wed Apr 21 2021 23:59:32 GMT+0200 (heure d’été d’Europe centrale)",
+    "petType": "PetType.DOG"
+  }
+]

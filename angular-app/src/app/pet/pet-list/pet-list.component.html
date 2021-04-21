@@ -4,9 +4,9 @@
         <h4>List is loading....</h4>
     </div>
 </ng-container>
-<ng-container *ngIf="!isListLoading">
-    <div class="pet-list" *ngIf="pets.length > 0">
-        <pet-card *ngFor="let pet of pets" [pet]="pet" [routerLink]="[pet.id]"></pet-card>
+<ng-container>
+    <div class="pet-list">
+        <pet-card *ngFor="let pet of pets$ | async" [pet]="pet" [routerLink]="[pet.id]"></pet-card>
     </div>
     <div class="action-bar">
         <button (click)="refreshList()" [hover] hoverDefaultColor="grey">Refresh list</button>

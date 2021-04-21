@@ -50,7 +50,7 @@ export class PetEditComponent implements OnInit {
         ],
         registeredDate: [
           this.pet
-            ? this.pet.registeredDate.toISOString().substring(0, 10)
+            ? new Date(this.pet.registeredDate).toISOString().substring(0, 10)
             : new Date().toISOString().substring(0, 10),
           Validators.required,
         ],

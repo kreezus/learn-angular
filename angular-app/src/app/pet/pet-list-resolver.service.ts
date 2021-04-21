@@ -1,6 +1,5 @@
 import { PetService } from './pet-service';
 import { PetEntity } from './pet-entity';
-import { PetModule } from './pet.module';
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -18,6 +17,6 @@ export class PetListResolverService implements Resolve<PetEntity[]> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): PetEntity[] | Observable<PetEntity[]> | Promise<PetEntity[]> {
-    return this.petService.getAsyncPets();
+    return this.petService.getPets();
   }
 }
