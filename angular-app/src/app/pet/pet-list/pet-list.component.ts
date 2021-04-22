@@ -24,7 +24,6 @@ export class PetListComponent implements OnInit {
     //this.activatedRoute.data.subscribe((data: { pets: PetEntity[] }) => {
     //  this.pets = data.pets;
     //});
-    this.pets$ = this.petService.getPets();
     this.refreshList();
   }
 

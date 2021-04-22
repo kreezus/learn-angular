@@ -7,8 +7,8 @@
         <p>{{ pet?.age | petAge}} </p>
         <p><small> {{ pet?.registeredDate | date }} </small></p>
         <div class="action">
-            <a [routerLink]="['edit',pet?.id]">Edit</a>
-            <a [routerLink]="['detail',pet?.id]">Detail</a>
+            <a [routerLink]="[pet?.id,'edit']">Edit</a>
+            <a [routerLink]="[pet?.id,'detail']">Detail</a>
             <a (click)="deletePet(pet?.id)">Delete</a>
         </div>
     </div>

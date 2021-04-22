@@ -21,29 +21,20 @@ const routes: Routes = [
     resolve: {
       pets: PetListResolverService,
     },
-    children: [
-      {
-        path: ':petId',
-        component: PetCardComponent,
-        canActivate: [PetNotFoundGuard],
-        resolve: {
-          pet: PetResolverService,
-        },
-      },
-    ],
+    
   },
   {
-    path: 'detail/:petId',
+    path: ':petId/detail',
     component: PetCardComponent,
-    canActivate: [PetNotFoundGuard],
+    //canActivate: [PetNotFoundGuard],
     resolve: {
       pet: PetResolverService,
     },
   },
   {
-    path: 'edit/:petId',
+    path: ':petId/edit',
     component: PetEditComponent,
-    canActivate: [PetNotFoundGuard],
+    //canActivate: [PetNotFoundGuard],
     resolve: {
       pet: PetResolverService,
     },

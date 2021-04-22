@@ -4,8 +4,9 @@ import { PetEntity } from './pet-entity';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map, tap, toArray } from 'rxjs/operators';
+import * as dayjs from 'dayjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,25 +16,17 @@ export class PetService {
   initialPets: PetEntity[] = [];
 
   update(petId: number, pet: PetEntity) {
-    const foundPet = this.getById(petId);
+    const foundPet = this.find(petId);
     if (foundPet) {
       const index = this.initialPets.findIndex((p) => p.id == petId);
       this.initialPets[index] = pet;
     }
   }
-  constructor(private httpClient: HttpClient) {
-    this.httpClient
-      .get<PetEntity[]>(`${this.apiBaseUrl}/pets/pets.json`, {
-        observe: 'body',
-      })
-      .subscribe((resp) => {
-        this.initialPets = resp;
-      });
-  }
+  constructor(private httpClient: HttpClient) {}
 
   getPets(): Observable<PetEntity[]> {
     return this.httpClient
-      .get<PetEntity[]>(`${this.apiBaseUrl}/pets/pets.json`, {
+      .get<PetEntity[]>(`${this.apiBaseUrl}/pets`, {
         observe: 'body',
       })
       .pipe(
@@ -54,8 +47,10 @@ export class PetService {
     this.initialPets.push(petToAdd);
   }
 
-  async getById(petId: number) {
-    return this.initialPets.find((p) => p.id == petId);
+  find(petId: number): Observable<HttpResponse<PetEntity>> {
+    return this.httpClient.get<PetEntity>(`${this.apiBaseUrl}/pets/${petId}`, {
+      observe: 'response',
+    });
   }
 
   removePet(petId: number) {

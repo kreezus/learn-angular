@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { PetService } from './pet-service';
 import { Injectable } from '@angular/core';
 import {
@@ -22,10 +23,8 @@ export class PetNotFoundGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.petService.getById(Number(route.paramMap.get('petId'))) != null) {
-      return true;
-    } else {
-      this.router.navigate(['/404']);
-    }
+    return this.petService
+      .find(Number(route.paramMap.get('petId')))
+      .pipe(map((p) => p != null));
   }
 }

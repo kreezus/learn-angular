@@ -12,11 +12,6 @@ const routes: Routes = [
     outlet: 'navbar',
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },
@@ -33,6 +28,7 @@ const routes: Routes = [
     path: 'vets',
     loadChildren: () => import('./vets/vets.module').then((m) => m.VetsModule),
   },
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
   { path: '**', redirectTo: 'home', pathMatch: 'prefix' },
 ];
 
